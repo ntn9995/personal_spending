@@ -5,6 +5,6 @@ class Helper:
 		for key in mapping:
 			if key in description.lower():
 				category = mapping[key]
-			break
+				break
 
 		return category
