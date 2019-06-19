@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route("/budget/api/email", methods=["POST"])
 def processExpense():
-    parsedReq = parseRequest(request)
+	parsedReq = parseRequest(request)
 
 	if not parsedReq:
 		return jsonify({
@@ -42,4 +42,4 @@ def parseRequest(request):
 		}
 	
 if __name__ == '__main__':
-    app.run()
+	app.run()
