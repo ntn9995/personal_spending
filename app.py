@@ -10,16 +10,11 @@ app = Flask(__name__)
 
 def parseEmail():
     payload = request.json
-    body = payload["body"]
-    subject = payload["subject"]
-    sheet = Sheets()
-    print(repr(body))
-
-    description, amount, category, method = parseEmail.parseEmail(subject, body)
+    amount = payload["amount"]
+    description = payload["description"]
     
-    if amount and method:
-        Sheets.addExpense(amount, description, category, method)
-        
+    print("{} - {}".format(amount, description))
+
 
 
 if __name__ == '__main__':
