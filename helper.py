@@ -1,4 +1,4 @@
-class Parser:
+class Helper:
 
 	def assignCategory(self, description, mapping):
 		category = "NOT FOUND"
