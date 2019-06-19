@@ -4,7 +4,7 @@ TRA = "Transporation"
 SUB = "Subscription"
 RNT = "Rent & Utilities"
 
-BOFA = {
+CAT_MAP = {
     "spotify": SUB,
     "amzn digital": SUB,
     "ting": SUB,
@@ -12,10 +12,7 @@ BOFA = {
     "lyft": TRA,
     "septa": TRA,
     "uber": TRA,
-    "freshgrocerwal": GRO
-}
-
-VENMO = {
+    "freshgrocerwal": GRO,
     "food": EAT,
     "internet": RNT,
     "water": RNT,

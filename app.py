@@ -2,23 +2,22 @@ import re
 from flask import Flask, jsonify, request
 from sheets import Sheets
 import constants
-import email_parser
+import parser
 
 app = Flask(__name__)
 
 @app.route("/budget/api/email", methods=["POST"])
-
-def parseEmail():
+def parseExpense():
     payload = request.json
     amount = payload["amount"]
     description = payload["description"]
-    
-    print("{} - {}".format(amount, description))
+    category = parser.assignCategory(description, constants.CAT_MAP)
+    method = "debit"
+
+    Sheets.addExpense(amount, description, category, method)
 
     return jsonify({
-        "success": "true",
-        "amount": amount,
-        "description": description
+        "success": "true"
         })
 
 
