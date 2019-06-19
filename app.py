@@ -15,6 +15,12 @@ def parseEmail():
     
     print("{} - {}".format(amount, description))
 
+    return jsonify({
+        "success": "true",
+        "amount": amount,
+        "description": description
+        })
+
 
 
 if __name__ == '__main__':
