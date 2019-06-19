@@ -15,13 +15,16 @@ class Sheets:
 
     def addExpense(self, amount, description, category, method):
         sheet = self.client.open('Budget').sheet1
+        
+        date = str(datetime.datetime.today())
+        time = str(datetime.datetime.now(timezone('US/Eastern'))\
+                    .strftime('%H:%M:%S')) 
 
-        newRow = [str(datetime.date.today()),
-                    str(datetime.datetime.now(timezone('US/Eastern'))\
-                        .strftime('%H:%M:%S')),
-                    amount,
-                    description,
-                    category,
-                    method]
+        newRow = [date,
+                time,
+                amount,
+                description,
+                category,
+                method]
 
         sheet.append_row(newRow, value_input_option='USER_ENTERED')

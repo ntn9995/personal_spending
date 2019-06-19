@@ -2,9 +2,7 @@ import re
 from helper import Helper
 from flask import Flask, jsonify, request
 from sheets import Sheets
-
 import constants
-
 
 app = Flask(__name__)
 
@@ -24,8 +22,6 @@ def processExpense():
     return jsonify({
         "success": "true"
         })
-
-
 
 if __name__ == '__main__':
     app.run()
