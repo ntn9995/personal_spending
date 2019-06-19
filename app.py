@@ -14,7 +14,9 @@ def parseExpense():
     category = parser.assignCategory(description, constants.CAT_MAP)
     method = "debit"
 
-    Sheets.addExpense(amount, description, category, method)
+    sheet = Sheets()
+
+    sheet.addExpense(amount, description, category, method)
 
     return jsonify({
         "success": "true"
