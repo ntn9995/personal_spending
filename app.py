@@ -8,7 +8,9 @@ app = Flask(__name__)
 
 @app.route("/budget/api/email", methods=["POST"])
 def processExpense():
-	parsedReq = parseRequest(request)
+
+	payload = request.json
+	parsedReq = parsePayload(payload)
 
 	if not parsedReq:
 		return jsonify({
@@ -16,8 +18,15 @@ def processExpense():
 			"msg": "illegal request body"
 			})
 
-def parseRequest(request):
-	payload = request.json
+	sheet = Sheets()
+
+	sheet.addExpense(parsedReq["amount"], parsedReq["description"], parsedReq["category"], parsedReq["method"])
+
+	return jsonify({
+		"success": "true"
+	})
+
+def parsePayload(payload):
 	
 	if not payload:
 		raise None
