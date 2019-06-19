@@ -11,11 +11,11 @@ app = Flask(__name__)
 @app.route("/budget/api/email", methods=["POST"])
 def processExpense():
     payload = request.json
-    parser = Parser()
+    helper = Helper()
 
     amount = payload["amount"]
     description = payload["description"]
-    category = parser.assignCategory(description, constants.CAT_MAP)
+    category = helper.assignCategory(description, constants.CAT_MAP)
     method = "debit"
 
     sheet = Sheets()
