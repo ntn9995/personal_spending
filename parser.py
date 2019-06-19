@@ -1,5 +1,3 @@
-import constants
-
 def assignCategory(description, mapping):
 
     category = "NOT FOUND"
