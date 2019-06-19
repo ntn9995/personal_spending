@@ -16,7 +16,7 @@ class Sheets:
     def addExpense(self, amount, description, category, method):
         sheet = self.client.open('Budget').sheet1
         
-        date = str(datetime.datetime.today())
+        date = str(datetime.date.today())
         time = str(datetime.datetime.now(timezone('US/Eastern'))\
                     .strftime('%H:%M:%S')) 
 
