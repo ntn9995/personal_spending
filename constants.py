@@ -1,6 +1,6 @@
 EAT = "Eating Out"
 GRO = "Groceries"
-TRA = "Transporation"
+TRA = "Transportation"
 SUB = "Subscription"
 RNT = "Rent & Utilities"
 
