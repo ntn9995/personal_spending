@@ -2,7 +2,7 @@ import re
 from flask import Flask, jsonify, request
 from sheets import Sheets
 import constants
-import parser
+from parser import Parser
 
 app = Flask(__name__)
 
@@ -11,7 +11,9 @@ def parseExpense():
     payload = request.json
     amount = payload["amount"]
     description = payload["description"]
-    category = parser.assignCategory(description, constants.CAT_MAP)
+
+
+    category = Parser().assignCategory(description, constants.CAT_MAP)
     method = "debit"
 
     sheet = Sheets()
