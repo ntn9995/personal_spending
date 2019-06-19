@@ -8,20 +8,38 @@ app = Flask(__name__)
 
 @app.route("/budget/api/email", methods=["POST"])
 def processExpense():
-    payload = request.json
-    helper = Helper()
+    parsedReq = parseRequest(request)
 
-    amount = payload["amount"]
-    description = payload["description"]
-    category = helper.assignCategory(description, constants.CAT_MAP)
-    method = "debit"
+	if not parsedReq:
+		return jsonify({
+			"success": "false",
+			"msg": "illegal request body"
+			})
 
-    sheet = Sheets()
-    sheet.addExpense(amount, description, category, method)
+def parseRequest(request):
+	payload = request.json
+	
+	if not payload:
+		raise None
+	
+	helper = Helper()
 
-    return jsonify({
-        "success": "true"
-        })
+	try:
+		amount = helper.parseAmount(payload["amount"])
+	except ValueError as e:
+		print(e)
+		return None
+	
+	description = payload["description"]
+	category = helper.assignCategory(description, constants.CAT_MAP)
+	method = "debit"
 
+	return {
+		"amount": amount,
+		"description": description, 
+		"category": category, 
+		"method": method
+		}
+	
 if __name__ == '__main__':
     app.run()
