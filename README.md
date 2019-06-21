@@ -61,13 +61,16 @@ Bank/Venmo email notification > Zapier > Backend API > Google Sheet.
 2. Venmo emails me with the notification.
 
 ![venmo](https://imgur.com/6IxFzJL.png)
+
 3. Gmail forwards it to my Zap.
 4. Zap fires off a POST request to my Flask application.
 
 ![Zap](https://imgur.com/k4ICw0D.png)
+
 5. The application adds the new payment as a new row in the 'expenses' sheet in the workbook.
 
 ![expenses](https://imgur.com/XDgBrFH.png)
+
 6. Tada!!!
 
 ![summary](https://imgur.com/WdMBW2y.png)
