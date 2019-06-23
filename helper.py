@@ -3,7 +3,7 @@ import re
 class Helper:
 
 	def parseAmount(self, amountStr):
-		regex = '\$[\d\.]{3,7}'
+		regex = '\$ ?[\d\.]{3,7}'
 		amount = extract(regex,amountStr)
 		if amount:
 			return amount
